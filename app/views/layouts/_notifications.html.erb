@@ -1,0 +1,7 @@
+<!-- deviseに関するフラッシュメッセージ -->
+<!-- alertかnoticeで切り分けされます -->
+<% flash.each do |key, value| %>
+  <div class="notifications">
+    <%= content_tag(:div, value, class: key) %>
+  </div>
+<% end %>
