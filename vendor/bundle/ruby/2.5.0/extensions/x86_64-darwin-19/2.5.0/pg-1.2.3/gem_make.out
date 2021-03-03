@@ -1,5 +1,5 @@
 current directory: /Users/yuki.ishizaki/tenkue-board-r019/vendor/bundle/ruby/2.5.0/gems/pg-1.2.3/ext
-/Users/yuki.ishizaki/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210226-92905-1rzgidr.rb extconf.rb
+/Users/yuki.ishizaki/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210303-15591-h28ezq.rb extconf.rb
 checking for pg_config... yes
 Using config values from /usr/local/bin/pg_config
 checking for libpq-fe.h... yes
@@ -150,4 +150,4 @@ linking shared-object pg_ext.bundle
 
 current directory: /Users/yuki.ishizaki/tenkue-board-r019/vendor/bundle/ruby/2.5.0/gems/pg-1.2.3/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 pg_ext.bundle ./.gem.20210226-92905-o84r6t
+/usr/bin/install -c -m 0755 pg_ext.bundle ./.gem.20210303-15591-x6jnq6

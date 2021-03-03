@@ -1,5 +1,5 @@
 current directory: /Users/yuki.ishizaki/tenkue-board-r019/vendor/bundle/ruby/2.5.0/gems/sassc-2.4.0/ext
-/Users/yuki.ishizaki/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210226-92905-8ymvg3.rb extconf.rb
+/Users/yuki.ishizaki/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20210303-15591-cm4pvw.rb extconf.rb
 creating Makefile
 
 current directory: /Users/yuki.ishizaki/tenkue-board-r019/vendor/bundle/ruby/2.5.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.bundle
 
 current directory: /Users/yuki.ishizaki/tenkue-board-r019/vendor/bundle/ruby/2.5.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210226-92905-j5dex3/sassc
+/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20210303-15591-1ut25g3/sassc
