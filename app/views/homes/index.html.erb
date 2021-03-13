@@ -33,8 +33,15 @@
               </li>
             </ul>
             <ul class="post__bottom_box__admin_actions">
-              <li>編集</li>
-              <li>削除</li>
+             <li>
+              <%= link_to '詳細', home_path(home.id), method: :get %>
+             </li>
+            <li>
+             <%= link_to '編集', edit_homes_path(home.id), method: :get %>
+            </li>
+            <li>
+              <%= link_to '詳細', home_path(home.id), method: :get %>
+            </li>
             </ul>
           </div>
         </div>
