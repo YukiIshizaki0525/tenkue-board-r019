@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
     board = current_user.boards.new(board_params)
     if board.save
       flash[:notice] = "投稿が完了しました。"
-      render :new
+      redirect_to boards_path
     else
       flash[:error_messages] = board.errors.full_messages
       render :new
