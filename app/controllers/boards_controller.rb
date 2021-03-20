@@ -1,5 +1,8 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!, only: :show
+  before_action :authenticate_user!, only: :new
+  def index
+    @boards = Board.all
+  end
 
   def new
     @board = current_user.boards.new
