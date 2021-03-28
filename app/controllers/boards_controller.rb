@@ -2,9 +2,9 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!, only: :new
   def index
     @boards = Board.all
-  endgit checkout xxx
+  end
 
-  def showgit branch xxxx
+  def show
     @board = Board.find(params[:id])
   end
 
