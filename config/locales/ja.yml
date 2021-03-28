@@ -1,0 +1,5 @@
+ja:
+  activerecord:
+    attributes:
+      board:
+        content: 投稿内容

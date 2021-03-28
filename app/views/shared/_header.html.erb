@@ -12,7 +12,7 @@
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
         </li>
         <li class="header__bar__user_nav__btn">
-          投稿する
+          <%= link_to '投稿する', new_board_path %>
         </li>
       </ul>
     <% else %>

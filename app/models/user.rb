@@ -7,4 +7,6 @@ class User < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
+
+  has_many :boards
 end
