@@ -19,7 +19,7 @@ ver.1.01
 ### あると望ましい経験
 - [Railsチュートリアル](https://railstutorial.jp/)や[『現場で使える Ruby on Rails 5速習実践ガイド』](https://www.amazon.co.jp/dp/4839962227/)での学習
 - GitHubを使用した経験
-- 個人でRailsアプリを開発、デプロイした経験
+ruby -v- 個人でRailsアプリを開発、デプロイした経験
 
 ## 人数とレビュー期間
 - 1チーム3名
@@ -115,3 +115,4 @@ RubyとRailsの基礎を理解していて、GitとGitHubを自分で使った�
 ----|----|---- 
 | 1.1 | 2020/12/12 | よくある質問を追加 |
 | 1.0 | 2020/8/27 | 初版作成 |
+＃https-github.com-YukiIshizaki0525-tenkue-board-r019

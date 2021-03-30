@@ -4,6 +4,10 @@ class BoardsController < ApplicationController
     @boards = Board.all
   end
 
+  def show
+    @board = Board.find(params[:id])
+  end
+
   def new
     @board = current_user.boards.new
   end
@@ -25,3 +29,4 @@ class BoardsController < ApplicationController
       params.permit(:content, :user_id)
     end
 end
+
