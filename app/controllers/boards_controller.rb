@@ -23,6 +23,10 @@ class BoardsController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
   private
 
     def board_params
