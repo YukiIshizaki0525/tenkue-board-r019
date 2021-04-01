@@ -1,9 +1,16 @@
-<%= render 'shared/error_messages' %>
+<% if flash[:error_messages] %>
+  <div class="vali_alert">
+    <ul>
+      <% flash[:error_messages].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-<%= form_with(model: @board, local: true) do |f| %>
+<%= form_with(model: board, local: true) do |f| %>
   <div class="form_area">
     <div class="form_area__field">
-      <% f.hidden_field :user_id %>
       <%= f.text_area :content, rows: 10, placeholder: "投稿内容を入力" %>
     </div>
   
