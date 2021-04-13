@@ -9,4 +9,5 @@ class User < ApplicationRecord
   end
 
   has_many :boards
+  has_many :comments, dependent: :destroy　#追記
 end

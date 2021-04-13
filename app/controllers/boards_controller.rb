@@ -5,8 +5,10 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = current_user.boards.new
+    @board = current_user.boards.new　
   end
+
+
 
   def create
     board = current_user.boards.new(board_params)
@@ -19,8 +21,12 @@ class BoardsController < ApplicationController
     end
   end
 
-  private
+  def show
+    @comments = Comment.all　#コメント一覧を表示
+    @comment = current_user.comments.new
+  end
 
+  private
     def board_params
       params.permit(:content, :user_id)
     end
