@@ -41,7 +41,8 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to board_path(@board.id)
     else
-      flash[:error_messages] = board.errors.full_messages
+      flash[:error_messages] = @board.errors.full_messages
+      flash[:board] = @board
       redirect_to edit_board_path
     end
   end
