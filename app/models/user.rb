@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likes_boards, through: :likes, source: :board
 
-  def already_favorited?(board)
+  def already_likes?(board)
     self.likes.exists?(board_id: board.id)
   end
 end
