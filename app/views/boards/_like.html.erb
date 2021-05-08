@@ -1,11 +1,17 @@
-<% if current_user.already_likes?(board) %>
-  <%= link_to board_likes_path(board), method: :delete, remote: true, class: "post_action_btn post_liked" do %>
-    <i class="fas fa-heart"></i>
-    <span><%= board.likes.length %></span>
+<% if user_signed_in? %>
+  <% if current_user.already_likes?(board) %>
+    <%= link_to board_likes_path(board), method: :delete, remote: true, class: "post_action_btn post_liked" do %>
+      <i class="fas fa-heart"></i>
+      <span><%= board.likes.length %></span>
+    <% end %>
+  <% else %>
+    <%= link_to board_likes_path(board), method: :post, remote: true, class: "post_action_btn" do %>
+      <i class="far fa-heart"></i>
+      <span><%= board.likes.length %></span>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to board_likes_path(board), method: :post, remote: true, class: "post_action_btn" do %>
-    <i class="far fa-heart"></i>
-    <span><%= board.likes.length %></span>
-  <% end %>
+  <i class="far fa-heart"></i>
+  <span><%= board.likes.length %></span>
 <% end %>
+
