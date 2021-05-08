@@ -9,4 +9,11 @@ class User < ApplicationRecord
   end
 
   has_many :boards
+
+  has_many :likes, dependent: :destroy
+  has_many :likes_boards, through: :likes, source: :board
+
+  def already_favorited?(board)
+    self.likes.exists?(board_id: board.id)
+  end
 end
