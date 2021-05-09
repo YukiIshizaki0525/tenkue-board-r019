@@ -10,6 +10,12 @@ class User < ApplicationRecord
 
   has_many :boards
 
+  has_many :likes, dependent: :destroy
+  has_many :likes_boards, through: :likes, source: :board
+
+  def already_likes?(board)
+    self.likes.exists?(board_id: board.id)
+  end
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
@@ -22,8 +28,6 @@ class User < ApplicationRecord
         format: { with: VALID_EMAIL_REGEX,
                   message: "は半角英数字で登録してください" },
         uniqueness: { case_sensitive: false }
-       
-        
 
   
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{8,32}\z/

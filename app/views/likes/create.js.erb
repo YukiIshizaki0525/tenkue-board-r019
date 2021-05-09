@@ -1,0 +1,1 @@
+document.querySelector('#board_<%= @board.id %>').innerHTML = '<%= j(render partial: "boards/like", locals: { board: @board }) %>'
