@@ -6,6 +6,10 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @comments = Comment.includes(:user).where(board_id: @board.id)
+    if user_signed_in?
+      @comment = current_user.comments.new
+    end
   end
 
   def new
@@ -23,10 +27,9 @@ class BoardsController < ApplicationController
     end
   end
 
-  private
 
+  private
     def board_params
       params.permit(:content, :user_id)
     end
 end
-
