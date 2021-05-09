@@ -23,10 +23,34 @@ class BoardsController < ApplicationController
     end
   end
 
+ 
+    def destroy
+      @board = Board.find(params[:id])
+      @board.destroy
+      redirect_to boards_path
+    end
+  
+
+  def edit
+    @board = Board.find(params[:id])
+  end
+  
+  def update
+    @board = Board.find(params[:id])
+    @board.update(board_params)
+    if @board.save
+      redirect_to board_path(@board.id)
+    else
+      flash[:error_messages] = @board.errors.full_messages
+      flash[:board] = @board
+      redirect_to edit_board_path
+    end
+  end
+
   private
 
     def board_params
-      params.permit(:content, :user_id)
+      params.require(:board).permit(:content, :user_id)
     end
 end
 
