@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = current_user.boards.new
+    @board = Board.new(flash[:board])
   end
 
   def create
@@ -18,23 +18,23 @@ class BoardsController < ApplicationController
       flash[:notice] = "投稿が完了しました。"
       redirect_to boards_path
     else
-      flash[:error_messages] = board.errors.full_messages
-      render :new
+      redirect_to new_board_path, flash: {
+        board: board,
+        error_messages: board.errors.full_messages
+      }
     end
   end
 
- 
-    def destroy
-      @board = Board.find(params[:id])
-      @board.destroy
-      redirect_to boards_path
-    end
-  
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to boards_path
+  end
 
   def edit
     @board = Board.find(params[:id])
   end
-  
+
   def update
     @board = Board.find(params[:id])
     @board.update(board_params)
