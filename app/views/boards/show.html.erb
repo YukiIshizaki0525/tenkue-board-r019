@@ -27,14 +27,17 @@
               <i class="far fa-comment-alt"></i>
               <span><%= @board.comments.length %></span>
             </li>
-            <li>
-              <i class="far fa-heart"></i>
-              <span>いいね数</span>
+            <li id="board_<%= @board.id %>">
+              <%= render "like", board: @board %>
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
-            編集
-            削除
+           
+            <% if user_signed_in? && current_user.id == @board.user_id %>
+            <%= link_to '編集', edit_board_path(@board)%>
+            <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
+    
+            <% end %>
           </div>
         </div>
       </div>

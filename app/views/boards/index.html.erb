@@ -31,15 +31,15 @@
                   <i class="far fa-comment-alt"></i>
                   <span><%= board.comments.length %></span>
                 </li>
-                <li>
-                  <i class="far fa-heart"></i>
-                  <span>いいね数</span>
+                <li id="board_<%= board.id %>">
+                  <%= render "like", board: board %>
                 </li>
               </ul>
               <ul class="post__bottom_box__admin_actions">
               <% if user_signed_in? && current_user.id == board.user_id %>
-                <li>編集</li>
-                <li>削除</li>
+               <%= link_to '編集', edit_board_path(board)%>
+               <%= link_to'削除', board_path(board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
+    
               <% end %>
               </ul>
             </div>
