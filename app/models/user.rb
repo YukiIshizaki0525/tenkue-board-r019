@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :boards
   has_many :comments
 
-  has_many :comments, dependent: :destroy　#追記
+  has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   has_many :likes_boards, through: :likes, source: :board
@@ -43,6 +43,4 @@ class User < ApplicationRecord
         presence: true,
         format: { with: VALID_PASSWORD_REGEX,
                   message: "は8~32文字で半角英字と半角数字のいずれとも含む必要があります" }
-
->>>>>>> master
 end
