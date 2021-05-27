@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_05_08_092646) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.index ["board_id"], name: "index_comments_on_board_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
@@ -45,6 +55,8 @@ ActiveRecord::Schema.define(version: 2021_05_08_092646) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "boards"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "boards"
   add_foreign_key "likes", "users"
 end

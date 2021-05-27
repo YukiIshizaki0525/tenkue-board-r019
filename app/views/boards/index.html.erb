@@ -8,7 +8,7 @@
     <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
       <%# 未投稿の場合は「まだ投稿されたスレッドはありません。」と表示するように条件分岐すること %>
-      
+
       <%# each文で投稿一覧を表示すること %>
       <li>
         <%= link_to board_path(board) do %>
@@ -20,7 +20,7 @@
               <div class="post__top_box__time">
                 <span>投稿日時：投稿日時</span>
               </div>
-            </div>  
+            </div>
             <div class="post__middle_box">
               <span>投稿内容</span>
               <%= board.content %>
@@ -29,7 +29,7 @@
               <ul class="post__bottom_box__user_actions">
                 <li>
                   <i class="far fa-comment-alt"></i>
-                  <span>コメント数</span>
+                  <span><%= board.comments.length %></span>
                 </li>
                 <li id="board_<%= board.id %>">
                   <%= render "like", board: board %>
@@ -49,5 +49,5 @@
     </ul>
     </div>
   <% end %>
-  
+
 </div>

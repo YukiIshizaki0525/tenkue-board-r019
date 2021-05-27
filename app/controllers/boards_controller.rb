@@ -6,6 +6,10 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @comments = Comment.includes(:user).where(board_id: @board.id)
+    if user_signed_in?
+      @comment = current_user.comments.new
+    end
   end
 
   def new
@@ -23,18 +27,18 @@ class BoardsController < ApplicationController
     end
   end
 
- 
-    def destroy
-      @board = Board.find(params[:id])
-      @board.destroy
-      redirect_to boards_path
-    end
-  
+
+  def destroy
+    @board = Board.find(params[:id])
+    @board.destroy
+    redirect_to boards_path
+  end
+
 
   def edit
     @board = Board.find(params[:id])
   end
-  
+
   def update
     @board = Board.find(params[:id])
     @board.update(board_params)
@@ -49,8 +53,8 @@ class BoardsController < ApplicationController
 
   private
 
+  private
     def board_params
       params.require(:board).permit(:content, :user_id)
     end
 end
-
