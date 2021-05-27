@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'home/index'
-  root 'home#index'
-
-
+  root 'boards#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -15,6 +11,6 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :comments, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy]
   end
-
 end

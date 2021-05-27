@@ -4,8 +4,7 @@
       <span>投稿詳細</span>
     </h3>
     <div class="back_link">
-      <i class="fas fa-angle-double-left"></i>
-      <span>一覧へ戻る</span>
+    <%= link_to '一覧へ戻る', boards_path %>
     </div>
   </div>
   <div class="post_wrapper__content scroll">
@@ -20,7 +19,7 @@
           </div>
         </div>  
         <div class="post_detail__middle_box">
-          <span>投稿内容</span>
+          <span><%= @board.content %></span>
         </div>
         <div class="post_detail__bottom_box">
           <ul class="post_detail__bottom_box__user_actions">
@@ -28,14 +27,17 @@
               <i class="far fa-comment-alt"></i>
               <span>コメント数</span>
             </li>
-            <li>
-              <i class="far fa-heart"></i>
-              <span>いいね数</span>
+            <li id="board_<%= @board.id %>">
+              <%= render "like", board: @board %>
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
-            編集
-            削除
+           
+            <% if user_signed_in? && current_user.id == @board.user_id %>
+            <%= link_to '編集', edit_board_path(@board)%>
+            <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
+    
+            <% end %>
           </div>
         </div>
       </div>

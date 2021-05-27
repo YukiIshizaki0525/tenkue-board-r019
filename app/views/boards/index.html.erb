@@ -8,40 +8,43 @@
     <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
       <%# 未投稿の場合は「まだ投稿されたスレッドはありません。」と表示するように条件分岐すること %>
+      
       <%# each文で投稿一覧を表示すること %>
       <li>
-        <div class="post">
-          <div class="post__top_box">
-            <div class="post__top_box__name">
-              <span>投稿者：投稿者名</span>
+        <%= link_to board_path(board) do %>
+          <div class="post">
+            <div class="post__top_box">
+              <div class="post__top_box__name">
+                <span>投稿者：投稿者名</span>
+              </div>
+              <div class="post__top_box__time">
+                <span>投稿日時：投稿日時</span>
+              </div>
+            </div>  
+            <div class="post__middle_box">
+              <span>投稿内容</span>
+              <%= board.content %>
             </div>
-            <div class="post__top_box__time">
-              <span>投稿日時：投稿日時</span>
+            <div class="post__bottom_box">
+              <ul class="post__bottom_box__user_actions">
+                <li>
+                  <i class="far fa-comment-alt"></i>
+                  <span>コメント数</span>
+                </li>
+                <li id="board_<%= board.id %>">
+                  <%= render "like", board: board %>
+                </li>
+              </ul>
+              <ul class="post__bottom_box__admin_actions">
+              <% if user_signed_in? && current_user.id == board.user_id %>
+               <%= link_to '編集', edit_board_path(board)%>
+               <%= link_to'削除', board_path(board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
+    
+              <% end %>
+              </ul>
             </div>
-          </div>  
-          <div class="post__middle_box">
-            <span>投稿内容</span>
-            <%= board.content %>
           </div>
-          <div class="post__bottom_box">
-            <ul class="post__bottom_box__user_actions">
-              <li>
-                <i class="far fa-comment-alt"></i>
-                <span>コメント数</span>
-              </li>
-              <li>
-                <i class="far fa-heart"></i>
-                <span>いいね数</span>
-              </li>
-            </ul>
-            <ul class="post__bottom_box__admin_actions">
-            <% if user_signed_in? && current_user.id == board.user_id %>
-              <li>編集</li>
-              <li>削除</li>
-            <% end %>
-            </ul>
-          </div>
-        </div>
+        <% end %>
       </li>
     </ul>
     </div>
