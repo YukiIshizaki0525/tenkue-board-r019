@@ -1,5 +1,7 @@
 ja:
   activerecord:
     attributes:
+      board:
+        content: '投稿内容'
       comment:
-        comment: コメント
+        comment: 'コメント'
