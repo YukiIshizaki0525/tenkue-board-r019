@@ -10,18 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def create
-    super do
-      resource.update(confirmed_at: Time .now.utc)
-      resource.save
-    end
-  end
-
-  def after_inactive_sign_up_path_for(resource)
-    flash[:notice] = "ユーザー登録が完了しました。"
-    redirect_to new_user_session_path
-  end
-
   # POST /resource
   # def create
   #   super
