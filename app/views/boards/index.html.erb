@@ -15,15 +15,15 @@
           <div class="post">
             <div class="post__top_box">
               <div class="post__top_box__name">
-                <span>投稿者：投稿者名</span>
+                <span>投稿者：<%= board.user.name %></span>
               </div>
               <div class="post__top_box__time">
-                <span>投稿日時：投稿日時</span>
+                <span>投稿日時：<%= board.created_at.to_s(:datetime) %></span>
               </div>
             </div>
             <div class="post__middle_box">
-              <span>投稿内容</span>
-              <%= board.content %>
+              <span><%= board.content %></span>
+              
             </div>
             <div class="post__bottom_box">
               <ul class="post__bottom_box__user_actions">

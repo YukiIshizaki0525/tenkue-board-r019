@@ -32,11 +32,9 @@
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
-           
             <% if user_signed_in? && current_user.id == @board.user_id %>
-            <%= link_to '編集', edit_board_path(@board)%>
-            <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
-    
+              <%= link_to '編集', edit_board_path(@board)%>
+              <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
             <% end %>
           </div>
         </div>
