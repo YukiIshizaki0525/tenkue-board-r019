@@ -12,10 +12,10 @@
       <div class="post_detail">
         <div class="post_detail__top_box">
           <div class="post_detail__top_box__name">
-            <span>投稿者：投稿者名</span>
+            <span>投稿者：<%= @board.user.name %></span>
           </div>
           <div class="post_detail__top_box__name">
-            <span>投稿日時：投稿日時</span>
+            <span>投稿日時：<%= @board.created_at.to_s(:datetime) %></span>
           </div>
         </div>
         <div class="post_detail__middle_box">
@@ -32,11 +32,9 @@
             </li>
           </ul>
           <div class="post_detail__bottom_box__admin_actions">
-           
             <% if user_signed_in? && current_user.id == @board.user_id %>
-            <%= link_to '編集', edit_board_path(@board)%>
-            <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
-    
+              <%= link_to '編集', edit_board_path(@board)%>
+              <%= link_to'削除', board_path(@board), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %>
             <% end %>
           </div>
         </div>
