@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!, only: :new
+  
   def index
     @boards = Board.all
   end

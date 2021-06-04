@@ -6,7 +6,7 @@
     <div class="comment_area__list__comment__right_box__info">
       <span>編集</span>
       <span>削除</span>
-      <span>投稿日時：<%= comment.created_at %></span>
+      <span>投稿日時：<%= comment.created_at.to_s(:datetime) %></span>
     </div>
     <div class="comment_area__list__comment__right_box__text">
       <span><%= comment.comment %></span>
