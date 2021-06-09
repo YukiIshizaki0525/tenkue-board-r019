@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_092646) do
+ActiveRecord::Schema.define(version: 2021_06_01_151410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,13 @@ ActiveRecord::Schema.define(version: 2021_05_08_092646) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "name"
     t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text "board"
     t.bigint "user_id", null: false
     t.bigint "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_comments_on_board_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -51,6 +53,10 @@ ActiveRecord::Schema.define(version: 2021_05_08_092646) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

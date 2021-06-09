@@ -11,9 +11,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by(id: params[:id])
-    redirect_to @comment, flash: { notice: 'コメントを削除しました' }
     @comment.destroy
-    redirect_to("/")
+    redirect_to board_path(@comment.board.id), flash: { notice: 'コメントを削除しました' }
   end
 
   private
