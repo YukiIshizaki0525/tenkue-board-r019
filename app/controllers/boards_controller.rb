@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  
+
   def index
     @boards = Board.all
   end
@@ -15,6 +15,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = current_user.boards.new
+    @submit = "投稿する"
   end
 
   def create
@@ -38,6 +39,7 @@ class BoardsController < ApplicationController
 
   def edit
     @board = Board.find(params[:id])
+    @submit = "更新する"
   end
 
   def update
@@ -58,4 +60,5 @@ class BoardsController < ApplicationController
     def board_params
       params.require(:board).permit(:content, :user_id)
     end
+
 end

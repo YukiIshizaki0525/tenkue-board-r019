@@ -6,9 +6,15 @@
       <% f.hidden_field :user_id %>
       <%= f.text_area :content, rows: 10, placeholder: "投稿内容を入力" %>
     </div>
-  
+
     <div class="form_area__action">
-      <%= f.submit '投稿', class: 'form_area__action__btn' %>
+      <%= f.submit "#{@submit}", class: 'form_area__action__btn' %>
     </div>
   </div>
 <% end %>
+
+<div class="back_link">
+  <%= link_to :back do %>
+    <button class='form_area__action__btn'>一覧に戻る</button>
+  <% end %>
+</div>
