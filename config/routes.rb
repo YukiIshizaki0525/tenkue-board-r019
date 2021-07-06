@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :boards do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :edit, :update]
     resource :likes, only: [:create, :destroy]
   end
 end

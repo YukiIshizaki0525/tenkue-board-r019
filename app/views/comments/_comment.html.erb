@@ -1,11 +1,13 @@
- <li class="comment_area__list__comment">
+<li class="comment_area__list__comment">
   <div class="comment_area__list__comment__left_box">
    <span><%= comment.user.name %></span>
   </div>
   <div class="comment_area__list__comment__right_box">
     <div class="comment_area__list__comment__right_box__info">
-      <span>編集</span>
-      <span>削除</span>
+      <% if user_signed_in? && current_user.id == comment.user_id %>
+        <span><%= link_to '編集', edit_board_comment_path(comment.board.id, comment.id) %></span>
+        <span><%= link_to '削除', board_comment_path(@board.id, comment.id), method: :delete, data: {confirm: '削除して宜しいでしょうか?'} %></span>
+      <% end %>  
       <span>投稿日時：<%= comment.created_at.to_s(:datetime) %></span>
     </div>
     <div class="comment_area__list__comment__right_box__text">

@@ -55,8 +55,6 @@ class BoardsController < ApplicationController
   end
 
   private
-
-  private
     def board_params
       params.require(:board).permit(:content, :user_id)
     end
