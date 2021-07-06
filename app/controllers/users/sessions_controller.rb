@@ -7,6 +7,8 @@ class Users::SessionsController < Devise::SessionsController
       user.password_confirmation = user.password
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
+    user.skip_confirmation!
+    user.save
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
