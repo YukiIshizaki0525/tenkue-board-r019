@@ -2,12 +2,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
           :confirmable, :lockable, :timeoutable, :trackable
-  def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-    end
-  end
 
   has_many :boards
 
@@ -43,4 +37,11 @@ class User < ApplicationRecord
         presence: true,
         format: { with: VALID_PASSWORD_REGEX,
                   message: "は8~32文字で半角英字と半角数字のいずれとも含む必要があります" }
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: 'ゲストユーザー') do |user|
+      o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
+      user.password = (0..19).map { o[rand(o.length)] }.join
+      user.password_confirmation = user.password
+    end
+  end
 end
