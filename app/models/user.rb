@@ -10,7 +10,6 @@ class User < ApplicationRecord
   end
 
   has_many :boards
-  has_many :comments
 
   has_many :comments, dependent: :destroy
 

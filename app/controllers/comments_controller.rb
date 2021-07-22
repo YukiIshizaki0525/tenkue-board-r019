@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
       flash[:notice] = "コメントを投稿しました"
       redirect_to comment.board
     else
-      flash[:error_messages] = board.errors.full_messages
-      render :new
+      flash[:error_messages] = comment.errors.full_messages
+      redirect_back fallback_location: comment.board
     end
   end
 
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
     if @comment.save
-       redirect_to board_path(@comment.board.id), notice: "コメントを編集しました"
+      redirect_to board_path(@comment.board.id), notice: "コメントを編集しました"
     else
       flash[:error_messages] = @comment.errors.full_messages
       flash[:board] = @comment
