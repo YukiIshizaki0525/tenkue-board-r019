@@ -6,15 +6,16 @@
   height: 64px;
   width: 100%;
   min-width: $fix_width;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 3px 0 rgb(146, 233, 64);
   z-index: 5;
-  background-color: $color_theme;
+  background-color: rgb(53, 94, 91);
   &__bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: $fix_width;
     height: 64px;
+    font-family: "cursive";
     margin: 0 auto;
     color: white;
     & h1 {
@@ -32,7 +33,7 @@
         height: 64px;
         padding: 22px 8px;
         &:hover {
-          background-color: $color_theme_opacity;
+          background-color: rgb(17, 148, 50);
           opacity: 0.8;
           transition: 0.5s;  
         }
