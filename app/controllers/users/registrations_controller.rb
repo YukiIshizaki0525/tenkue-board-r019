@@ -13,9 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     @user.skip_confirmation!
-    @user.save
-    flash[:notice] = "新規登録が完了いたしました。"
-    redirect_to new_user_session_path
+    if @user.save
+      flash[:notice] = "新規登録が完了いたしました。"
+      redirect_to new_user_session_path
+    else
+      flash[:alert] = @user.errors.full_messages
+      render :new
+    end
   end
 
   # GET /resource/edit
